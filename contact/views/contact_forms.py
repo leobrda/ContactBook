@@ -1,20 +1,23 @@
-from django.shortcuts import render, get_object_or_404, redirect
-from django.db.models import Q
-from contact.models import Contact
-from django.core.paginator import Paginator
-from django.http import Http404
+from django.shortcuts import render, redirect
+from contact.forms import ContactForm
 
 
 def create(request):
     if request.method == 'POST':
-        print(request.method)
-        print(request.POST.get('first_name'))
-        print(request.POST.get('last_name'))
+        form = ContactForm(request.POST)
+
+        context = {
+            'form': form
+        }
+
+        if form.is_valid():
+            form.save()
+            return redirect('contact:create')
+
+        return render(request, 'contact/create.html', context)
 
     context = {
-
+        'form': ContactForm(),
     }
-
-    print(request.method)
 
     return render(request, 'contact/create.html', context)
