@@ -1,8 +1,7 @@
 from django.shortcuts import render, redirect
-from django.contrib import messages
+from django.contrib import auth, messages
 from contact.forms import RegisterForm, RegisterUpdateForm
 from django.contrib.auth.forms import AuthenticationForm
-from django.contrib import auth
 from django.contrib.auth.decorators import login_required
 
 

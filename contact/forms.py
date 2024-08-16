@@ -26,7 +26,7 @@ class ContactForm(forms.ModelForm):
 
         if first_name == last_name:
             msg = ValidationError(
-                'Primeiro nome não pode ser igual ao segundo',
+                'First name cannot be the same as the second.',
                 code='invalid'
             )
             self.add_error('first_name', msg)
@@ -94,7 +94,7 @@ class RegisterUpdateForm(forms.ModelForm):
     )
 
     password2 = forms.CharField(
-        label='Password confirmation',
+        label='Password Confirmation',
         strip=False,
         widget=forms.PasswordInput(attrs={'autocomplete': 'new-password'}),
         help_text='Use the same password as before.',
